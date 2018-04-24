@@ -1,10 +1,11 @@
 #pragma once
 
+#include "ms_board.hpp"
+
 class Game{
   private:
-  Board board;
   
   public:
-  Game();
   bool gameMain();  
-}
+  static int inputNum();
+};

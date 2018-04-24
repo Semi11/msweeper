@@ -1,6 +1,7 @@
 #pragma once
 
 #include <vector>
+#include <ms_cell.hpp>
 
 class Board{
   private:
@@ -8,12 +9,12 @@ class Board{
   const int height;
   const int width;
 
-  int posToX(int pos) const{return pos % width}
-  int posToY(int pos) const{return pos / width}
-  int xyToPos(int x, int y) const{return y * width + x}
-
   public:
   Board(int height, int width, int MNum);
   bool openCell(int pos);
   bool isMOpened();
-}
+  bool isAllCellOpened();
+  static int posToX(int pos, int width){return pos % width;}
+  static int posToY(int pos, int width){return pos / width;}
+  static int xyToPos(int x, int y, int width){return y * width + x;}
+};
