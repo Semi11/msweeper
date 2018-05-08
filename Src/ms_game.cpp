@@ -18,6 +18,7 @@ bool Game::gameMain(){
   Board board(height, width, MNum);
   view.dispBoard(board.getAllCellState(), height, width);
 
+  time = clock();
   //ゲームメインループ
   while(true){
     while(true){
@@ -39,6 +40,7 @@ bool Game::gameMain(){
     
     if(board.isAllCellOpened()) {
       std::cout << "GameClear" << std::endl;
+      std::cout << "Clear Time " << clock() - time << std::endl; 
       break;
     }
   }

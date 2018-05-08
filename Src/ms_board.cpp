@@ -46,6 +46,7 @@ bool Board::openCell(int pos){
 }
 
 bool Board::openCell(int x, int y){
+  if(0 > x || width <= x || 0 > y || height <= y)return false;
   return openCell(xyToPos(x,y,width)); 
 }
 
