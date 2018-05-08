@@ -5,9 +5,13 @@
 
 Board::Board(int height, int width, int MNum):cells(height* width),height(height),width(width){
   //指定個数分Mをセット
+<<<<<<< HEAD
   MNum = std::min(static_cast<int>(cells.size()),MNum);
   
   for(int i = 0;i < MNum;i++) cells.at(i).setM();
+=======
+  for(int i = 0;i < std::min((int)cells.size(), MNum);i++) cells.at(i).setM();
+>>>>>>> e5575f398f5db9fae182f873c7718d6757755d20
 
   //ボードをシャッフル
   std::random_device seed_gen;
@@ -18,9 +22,15 @@ Board::Board(int height, int width, int MNum):cells(height* width),height(height
   int pos = 0;
   for(auto c : cells){
     if(c.hasM()){
+<<<<<<< HEAD
       for(int y = std::max(0, posToY(pos, width) - 1); y <= std::min(height-1, posToY(pos, width) + 1); y++){
         for(int x = std::max(0, posToX(pos, width) - 1); x <= std::min(width-1, posToX(pos, width) + 1); x++){
           if((xyToPos(x,y,width)) != pos) cells.at(xyToPos(x,y,width)).incrementMCount();
+=======
+      for(int x = std::max(0, posToX(pos, width) - 1); x < std::min(width, posToX(pos, width) + 1); x++){
+        for(int y = std::max(0, posToY(pos, width) - 1); y < std::min(width, posToY(pos, width) + 1); y++){
+          if(int p = xyToPos(x,y,width) != pos) cells.at(p).incrementMCount();
+>>>>>>> e5575f398f5db9fae182f873c7718d6757755d20
         }
       }
     }
@@ -29,14 +39,25 @@ Board::Board(int height, int width, int MNum):cells(height* width),height(height
 }
 
 bool Board::openCell(int pos){
+<<<<<<< HEAD
   if(pos < 0 || static_cast<int>(cells.size()) <= pos) return false;
+=======
+  if(pos < 0 || (int)cells.size() <= pos) return false;
+>>>>>>> e5575f398f5db9fae182f873c7718d6757755d20
 
   if(cells.at(pos).open()){
     //明らかにMがないマスを自動で開く
     if(cells.at(pos).getAroundMNum() == 0){
+<<<<<<< HEAD
       for(int y = std::max(0, posToY(pos, width) - 1); y <= std::min(height-1, posToY(pos, width) + 1); y++){
         for(int x = std::max(0, posToX(pos, width) - 1); x <= std::min(width-1, posToX(pos, width) + 1); x++){
           if(xyToPos(x,y,width) != pos) openCell(xyToPos(x,y,width));
+=======
+      //明らかにMがないマスを自動で開く
+      for(int x = std::max(0, posToX(pos, width) - 1); x < std::min(width, posToX(pos, width) + 1); x++){
+        for(int y = std::max(0, posToY(pos, width) - 1); y < std::min(width, posToY(pos, width) + 1); y++){
+          if(int p = xyToPos(x,y,width) != pos) openCell(p);
+>>>>>>> e5575f398f5db9fae182f873c7718d6757755d20
         }
       }
     }
@@ -45,11 +66,14 @@ bool Board::openCell(int pos){
   return true;
 }
 
+<<<<<<< HEAD
 bool Board::openCell(int x, int y){
   if(0 > x || width <= x || 0 > y || height <= y)return false;
   return openCell(xyToPos(x,y,width)); 
 }
 
+=======
+>>>>>>> e5575f398f5db9fae182f873c7718d6757755d20
 bool Board::isMOpened(){
   for(auto c : cells){
     if(c.hasM() && c.isOpened())return true;
