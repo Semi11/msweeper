@@ -12,6 +12,7 @@ class Board{
   public:
   Board(int height, int width, int MNum);
   bool openCell(int pos);
+  bool openCell(int x, int y);
   bool isMOpened();
   bool isAllCellOpened();
   static int posToX(int pos, int width){return pos % width;}

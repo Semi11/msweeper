@@ -45,6 +45,10 @@ bool Board::openCell(int pos){
   return true;
 }
 
+bool Board::openCell(int x, int y){
+  return openCell(xyToPos(x,y,width)); 
+}
+
 bool Board::isMOpened(){
   for(auto c : cells){
     if(c.hasM() && c.isOpened())return true;

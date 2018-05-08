@@ -14,18 +14,22 @@ bool Game::gameMain(){
   width = inputNum();
   std::cout << "Mの数を入力してください" << std::endl;
   MNum = inputNum();
-  
+
   Board board(height, width, MNum);
   view.dispBoard(board.getAllCellState(), height, width);
 
   //ゲームメインループ
   while(true){
-    std::cout << "開きたいマスの数値を入力してください" << std::endl;
-    while(!board.openCell(inputNum())){
-      std::cout << "そのマスは開けません" << std::endl;
-      std::cout << "もう一度入力してください" << std::endl;
+    while(true){
+      int x,y;
+      std::cout << "開きたいマスの座標を入力してください" << std::endl;
+      std::cout << "x->";
+      x = inputNum();
+      std::cout << "y->";
+      y = inputNum();
+      if(board.openCell(x,y))break;
+      std::cout << "そのマスは開けません" << std::endl << "もう一度入力してください" << std::endl;
     }
-
     view.dispBoard(board.getAllCellState(), height, width);
     
     if(board.isMOpened()) {
@@ -37,9 +41,7 @@ bool Game::gameMain(){
       std::cout << "GameClear" << std::endl;
       break;
     }
-
   }
-
   return true;
 }
 
