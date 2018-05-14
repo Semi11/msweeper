@@ -6,10 +6,7 @@
 
 bool Game::gameMain(){
   int height, width, MNum;
-<<<<<<< HEAD
   View view;
-=======
->>>>>>> e5575f398f5db9fae182f873c7718d6757755d20
 
   std::cout << "ボードの縦の大きさを入力してください" << std::endl;
   height = inputNum();
@@ -17,7 +14,6 @@ bool Game::gameMain(){
   width = inputNum();
   std::cout << "Mの数を入力してください" << std::endl;
   MNum = inputNum();
-<<<<<<< HEAD
 
   Board board(height, width, MNum);
   view.dispBoard(board.getAllCellState(), height, width);
@@ -37,16 +33,6 @@ bool Game::gameMain(){
     }
     view.dispBoard(board.getAllCellState(), height, width);
     
-=======
-  
-  Board board(width, height, MNum);
-  
-  //ゲームメインループ
-  while(true){
-    std::cout << "開きたいマスの数値を入力してください" << std::endl;
-    board.openCell(inputNum());
-
->>>>>>> e5575f398f5db9fae182f873c7718d6757755d20
     if(board.isMOpened()) {
       std::cout << "GameOver" << std::endl;
       break;
@@ -54,15 +40,9 @@ bool Game::gameMain(){
     
     if(board.isAllCellOpened()) {
       std::cout << "GameClear" << std::endl;
-<<<<<<< HEAD
       std::cout << "Clear Time " << clock() - time << std::endl; 
       break;
     }
-=======
-      break;
-    }
-
->>>>>>> e5575f398f5db9fae182f873c7718d6757755d20
   }
   return true;
 }

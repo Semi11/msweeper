@@ -11,9 +11,5 @@ bool Cell::open(){
 }
 
 void Cell::incrementMCount(){
-<<<<<<< HEAD
   if(++aroundMNum > AROUND_CELL_NUM) throw std::range_error("error in incrementMCount");
-=======
-  if(++aroundMNum > AROUND_CELL_NUM) throw 1;
->>>>>>> e5575f398f5db9fae182f873c7718d6757755d20
 }
