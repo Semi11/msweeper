@@ -22,6 +22,17 @@ bool Game::gameMain(){
   time = clock();
   //ゲームメインループ
   while(true){
+    if(board.isMOpened()) {
+      std::cout << "GameOver" << std::endl;
+      break;
+    }
+    
+    if(board.isAllCellOpened()) {
+      std::cout << "GameClear" << std::endl;
+      std::cout << "Clear Time " << clock() - time << std::endl; 
+      break;
+    }
+    
     while(true){
       int x,y;
       std::cout << "開きたいマスの座標を入力してください" << std::endl;
@@ -34,16 +45,6 @@ bool Game::gameMain(){
     }
     view.dispBoard(board.getAllCellState(), height, width);
     
-    if(board.isMOpened()) {
-      std::cout << "GameOver" << std::endl;
-      break;
-    }
-    
-    if(board.isAllCellOpened()) {
-      std::cout << "GameClear" << std::endl;
-      std::cout << "Clear Time " << clock() - time << std::endl; 
-      break;
-    }
   }
   return true;
 }
@@ -53,9 +54,9 @@ int Game::inputNum(){
 
   while(true){
     std::cin >> num;
-    if(std::cin.good()) return num;
+    if(std::cin.good() && num >= 0 && num <=100) return num;
     std::cin.clear();
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
-    std::cout << "不正な入力、もう１度入力してください" << std::endl;
+    std::cout << "不正な入力、もう１度入力してください(0-100)" << std::endl;
   }
 }
